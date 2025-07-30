@@ -7,6 +7,7 @@ from constants import ASTEROID_SPAWN_RATE
 from constants import ASTEROID_MAX_RADIUS
 from constants import PLAYER_RADIUS
 from player import Player
+from constants import PLAYER_TURN_SPEED
 
 def main():
     pygame.init()
@@ -24,8 +25,9 @@ def main():
         black = (0,0,0)
         screen.fill(black)
         player.draw(screen)
+        player.update(dt)
         pygame.display.flip()
-        dt = clock.tick(60)
+        dt = clock.tick(60) /1000
 
 
 if __name__ == "__main__":
