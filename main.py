@@ -1,4 +1,5 @@
 import pygame
+import sys
 from constants import SCREEN_WIDTH
 from constants import SCREEN_HEIGHT
 from constants import ASTEROID_MIN_RADIUS
@@ -10,6 +11,7 @@ from player import Player
 from constants import PLAYER_TURN_SPEED
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from cricleshape import CircleShape 
 
 def main():
     pygame.init()
@@ -37,6 +39,10 @@ def main():
         for thing in drawable:
             thing.draw(screen)
         updatable.update(dt)
+        for asteroid in asteroids:
+            if asteroid.check_collision(player):
+                print("Game Over!")
+                sys.exit()
         pygame.display.flip()
 
 
